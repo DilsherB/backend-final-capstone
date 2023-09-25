@@ -33,7 +33,6 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
         run: |
-          cd back-end-rails/
           sudo apt-get -yqq install libpq-dev
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
