@@ -1,0 +1,42 @@
+name: CI
+on: pull_request
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Build and run test
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/back_end_rails_test
+          RAILS_ENV: test
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+          DB_HOST: localhost
+          DB_PORT: 5432
+        run: |
+          cd back-end-rails/
+          sudo apt-get -yqq install libpq-dev
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails db:seed
+          RAILS_ENV=test bundle exec rake
