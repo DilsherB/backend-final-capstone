@@ -1,9 +1,8 @@
 class Car < ApplicationRecord
   belongs_to :user
   belongs_to :model
-  has_many :rentals
+  has_many :rentals, foreign_key: 'car_id'
 
   validates :license_plate, presence: true, uniqueness: true
-  validates :status, presence: true
-  validates :model_id, presence: true
+  validates :status, :name, :image, :price, presence: true
 end
