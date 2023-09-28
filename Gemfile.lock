@@ -189,6 +189,10 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    simple_token_authentication (1.18.1)
+      actionmailer (>= 3.2.6, < 8)
+      actionpack (>= 3.2.6, < 8)
+      devise (>= 3.2, < 6)
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
@@ -217,6 +221,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.8)
   rspec-rails
+  simple_token_authentication
   tzinfo-data
 
 RUBY VERSION
