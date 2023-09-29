@@ -5,4 +5,5 @@ class Car < ApplicationRecord
 
   validates :license_plate, presence: true, uniqueness: true
   validates :status, :name, :image, :price, presence: true
+  validates :image, format: { with: /\.(png|jpg|jpeg)\Z/i, message: 'must be a URL for GIF, JPG or PNG image.' }
 end

@@ -3,6 +3,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
     create_table :cars do |t|
       t.string :plate_number
       t.boolean :status
+      t.strig :image
       t.references :user, null: false, foreign_key: true
       t.references :model, null: false, foreign_key: true
 
