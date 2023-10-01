@@ -3,4 +3,8 @@ class ModelController < applicationController
     render json: Model.all
   end
 
+  def show
+    render json: Model.find(params[:id])
+  end
+
 end
