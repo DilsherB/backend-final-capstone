@@ -16,6 +16,10 @@ class ModelController < applicationController
     end
   end
 
+  def update
+    render json: model.update(params[:id], model_params)
+  end
+
   private
 
   def model_params
