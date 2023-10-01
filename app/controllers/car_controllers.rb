@@ -20,6 +20,10 @@ class CarController < applicationController
     render json: Car.update(params[:id], car_params)
   end
 
+  def destroy
+    render json: Car.destroy(params[:id])
+  end
+
   private
 
   def car_params
