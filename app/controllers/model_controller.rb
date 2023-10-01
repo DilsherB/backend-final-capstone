@@ -17,7 +17,11 @@ class ModelController < applicationController
   end
 
   def update
-    render json: model.update(params[:id], model_params)
+    render json: Model.update(params[:id], model_params)
+  end
+
+  def destroy
+    render json: Model.destroy(params[:id])
   end
 
   private
