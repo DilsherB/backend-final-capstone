@@ -1,4 +1,4 @@
-class ModelController < applicationController
+class ModelController < ApplicationController
   def index
     render json: Model.all
   end
