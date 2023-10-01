@@ -4,6 +4,7 @@ class CreateModels < ActiveRecord::Migration[7.0]
       t.string :model_name
       t.integer :year
       t.string :manufacturer
+      t.string :logo
 
       t.timestamps
     end
