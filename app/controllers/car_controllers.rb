@@ -15,6 +15,10 @@ class CarController < applicationController
       render json: car.errors, status: :unprocessable_entity
     end
   end
+  
+  def update
+    render json: Car.update(params[:id], car_params)
+  end
 
   private
 
