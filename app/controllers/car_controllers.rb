@@ -15,7 +15,7 @@ class CarController < applicationController
       render json: car.errors, status: :unprocessable_entity
     end
   end
-  
+
   def update
     render json: Car.update(params[:id], car_params)
   end
@@ -29,6 +29,4 @@ class CarController < applicationController
   def car_params
     params.require(:car).permit(:license_plate, :status, :name, :image, :price)
   end
-
-  
 end

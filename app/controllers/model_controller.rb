@@ -29,5 +29,4 @@ class ModelController < ApplicationController
   def model_params
     params.require(:model).permit(:name, :year, :manufacturer, :image)
   end
-
 end
