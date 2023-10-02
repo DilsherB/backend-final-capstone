@@ -19,4 +19,8 @@ class UserController < ApplicationController
   def update
     render json: User.update(params[:id], user_params)
   end
+
+  def destroy
+    render json: User.destroy(params[:id])
+  end
 end
