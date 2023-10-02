@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :update, :destroy]
       resources :model, only: [:index, :create, :update, :destroy]
       resources :car, only: [:index, :create, :update, :destroy]
+      resources :rentals, only: [:index, :create, :update, :destroy]
     end
   end
 end
