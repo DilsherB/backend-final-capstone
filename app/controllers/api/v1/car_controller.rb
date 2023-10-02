@@ -11,7 +11,9 @@ class Api::V1::CarController < ApplicationController
     @car.user = current_devise_api_user
     @car.model = @model
 
-    if @car.save
+    if @model.nil?
+      render json: { message: 'Invalid model ID' }, status: :no_content
+    elsif @car.save
       render json: @car.to_json, status: :created
     else
       render json: @car.errors.to_json, status: :unprocessable_entity
