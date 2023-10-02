@@ -23,4 +23,10 @@ class UserController < ApplicationController
   def destroy
     render json: User.destroy(params[:id])
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :phone_number)
+  end
 end
