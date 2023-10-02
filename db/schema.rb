@@ -17,6 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_183242) do
   create_table "cars", force: :cascade do |t|
     t.string "plate_number"
     t.boolean "status"
+    t.string "image"
+    t.float "price"
     t.bigint "user_id", null: false
     t.bigint "model_id", null: false
     t.datetime "created_at", null: false
@@ -42,9 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_183242) do
   end
 
   create_table "models", force: :cascade do |t|
-    t.string "model_name"
+    t.string "name"
     t.integer "year"
     t.string "manufacturer"
+    t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +90,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_183242) do
 
   add_foreign_key "cars", "models"
   add_foreign_key "cars", "users"
-  add_foreign_key "rentals", "cars"
   add_foreign_key "rentals", "users"
 end
