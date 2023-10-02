@@ -1,6 +1,6 @@
 class RentalController < ApplicationController
   def index
-    reder json: Rental.all
+    render json: Rental.all
   end
 
   def show
@@ -14,5 +14,9 @@ class RentalController < ApplicationController
     else
       render json: rental.errors, status: :unprocessable_entity
     end
+  end
+
+  def update
+    render json: Rental.update(params[:id], rental_params)
   end
 end
