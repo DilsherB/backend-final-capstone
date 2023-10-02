@@ -15,4 +15,8 @@ class UserController < ApplicationController
       render json: user.errors, status: :unprocessable_entity
     end
   end
+
+  def update
+    render json: User.update(params[:id], user_params)
+  end
 end
