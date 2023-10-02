@@ -1,4 +1,4 @@
-class CarController < applicationController
+class CarController < ApplicationController
   def index
     render json: Car.all
   end
