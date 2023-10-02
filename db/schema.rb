@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_181739) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.integer "rental_number"
+    t.string "rental_number"
     t.date "rental_date"
     t.datetime "time_depart"
     t.datetime "time_arrive"
@@ -91,5 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_181739) do
 
   add_foreign_key "cars", "models"
   add_foreign_key "cars", "users"
+  add_foreign_key "rentals", "cars"
   add_foreign_key "rentals", "users"
 end

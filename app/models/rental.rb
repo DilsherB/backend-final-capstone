@@ -3,5 +3,5 @@ class Rental < ApplicationRecord
   belongs_to :car
 
   validates :rental_number, presence: true, uniqueness: true
-  validates :rental_date, :time_depart, :time_arrive, :date_return, :payment, presence: true
+  validates :rental_date, :date_return, :destination, presence: true
 end
