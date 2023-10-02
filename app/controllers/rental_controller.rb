@@ -19,4 +19,8 @@ class RentalController < ApplicationController
   def update
     render json: Rental.update(params[:id], rental_params)
   end
+
+  def destroy
+    render json: Rental.destroy(params[:id])
+  end
 end
