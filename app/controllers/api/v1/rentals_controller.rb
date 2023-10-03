@@ -7,7 +7,7 @@ class Api::V1::RentalsController < ApplicationController
   end
 
   def create
-    @car = Car.find_by(id: params['car_id'])
+    @car = Car.find_by(id: params['car_id'].to_i)
     @rental = Rental.new(rental_params)
     @rental.user = current_devise_api_user
     @rental.car = @car
@@ -23,8 +23,8 @@ class Api::V1::RentalsController < ApplicationController
   end
 
   def update
-    @rental = current_devise_api_user.rentals.find_by(id: params['id'])
-    @car = Car.find_by(id: params['car_id'])
+    @rental = current_devise_api_user.rentals.find_by(id: params['id'].to_i)
+    @car = Car.find_by(id: params['car_id'].to_i)
     @rental.car = @car
 
     if @rental.nil?
@@ -37,7 +37,7 @@ class Api::V1::RentalsController < ApplicationController
   end
 
   def destroy
-    @rental = current_devise_api_user.rentals.find(params['id'])
+    @rental = current_devise_api_user.rentals.find(params['id'].to_i)
     if @rental.destroy
       render json: @rental.to_json, status: :ok
     else

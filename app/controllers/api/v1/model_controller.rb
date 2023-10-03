@@ -17,7 +17,7 @@ class Api::V1::ModelController < ApplicationController
   end
 
   def destroy
-    @car_model = Model.find(params['id'])
+    @car_model = Model.find(params['id'].to_i)
     if @car_model.destroy
       render json: @car_model.to_json, status: :ok
     else
@@ -26,7 +26,7 @@ class Api::V1::ModelController < ApplicationController
   end
 
   def update
-    @car_model = Model.find_by(id: params['id'])
+    @car_model = Model.find_by(id: params['id'].to_i)
     if @car_model.nil?
       render json: { name: 'unavailable model' }, status: :no_content
     elsif @car_model.update(model_params)

@@ -6,7 +6,7 @@ class Api::V1::CarController < ApplicationController
   end
 
   def create
-    @model = Model.find_by(id: params['model_id'])
+    @model = Model.find_by(id: params['model_id'].to_i)
     @car = Car.new(car_params)
     @car.user = current_devise_api_user
     @car.model = @model
@@ -21,7 +21,7 @@ class Api::V1::CarController < ApplicationController
   end
 
   def destroy
-    @car = Car.find(params['id'])
+    @car = Car.find(params['id'].to_i)
     if @car.destroy
       render json: @car.to_json, status: :ok
     else
@@ -30,7 +30,7 @@ class Api::V1::CarController < ApplicationController
   end
 
   def update
-    @car = Car.find_by(id: params['id'])
+    @car = Car.find_by(id: params['id'].to_i)
     if @car.nil?
       render json: { name: 'unavailable car' }, status: :no_content
     elsif @car.update(car_params)
