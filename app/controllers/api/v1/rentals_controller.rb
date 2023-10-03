@@ -47,6 +47,8 @@ class Api::V1::RentalsController < ApplicationController
 
   private
 
+  def update_car_status(id); end
+
   def rental_params
     params.permit(:rental_date, :destination, :date_return)
   end
