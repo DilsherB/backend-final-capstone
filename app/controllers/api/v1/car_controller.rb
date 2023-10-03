@@ -43,6 +43,6 @@ class Api::V1::CarController < ApplicationController
   private
 
   def car_params
-    params.permit(:plate_number, :status, :image, :price, :city)
+    params.permit(:name, :plate_number, :status, :image, :price, :city)
   end
 end
