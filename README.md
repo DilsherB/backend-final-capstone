@@ -1,7 +1,7 @@
 <div align="center">
   <h2><b>🕹️🕹️ Car Rental API 🕹️🕹️</b></h2>
   <br/>
-    ![image](https://github.com/DilsherB/backend-final-capstone/assets/33148222/4000dc01-e2ad-4fdc-b506-2951b58681f2)
+    <img src="./public/images/carlogo.png" alt="logo" width="140"  height="auto" />
   <br/>
 </div>
 
@@ -62,8 +62,9 @@ To access the documentation, run the rails server using `rails s` and go to the 
 
 - [Link to api-doc](https://documenter.getpostman.com/view/8148254/2s9YJc1Np7#a9ac381d-7262-4258-8356-ae5a8821455d)
 
-<br/> 
-![image](https://github.com/DilsherB/backend-final-capstone/assets/33148222/d32a4442-2d1c-45f6-b67a-793186a53567)
+<br/>
+    <img src="./public/images/api.png" alt="logo" width="auto"  height="auto" />
+<br/>
 
 
 
@@ -97,7 +98,8 @@ In this team, we are 4 in number,
 ## 🚀 ERD Diagram <a name="erd"></a>
 
 <br/>
-![image](https://github.com/DilsherB/backend-final-capstone/assets/33148222/ef475aae-3426-428a-81b0-ea79083c3d74)
+    <img src="./public/images/diagram.png" alt="logo" width="auto"  height="auto" />
+  <br/>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
