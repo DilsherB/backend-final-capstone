@@ -35,7 +35,7 @@
 
 # 📖 [Car-Rental-app-api] <a name="about-project"></a>
 
-**[Car Rental APi]** is the backend application designed to facilitate the process of booking and managing car rentals. It allows users to browse available cars, reserve desired cars, and specify rental details.
+**[Car Rental APi]** The backend application is specifically designed to streamline the car rental process by providing users with a seamless experience. It empowers users to effortlessly explore a wide range of available cars, make reservations for their preferred vehicles, and conveniently customize rental details according to their needs.
 
 
 ### Tech Stack <a name="tech-stack"></a>
