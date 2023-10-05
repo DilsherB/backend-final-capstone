@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   # get 'model/create'
   # get 'model/destroy'
   # get 'model/edit'
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create, :destroy]
       resources :users, only: [:create, :update, :destroy]
       resources :model, only: [:index, :create, :update, :destroy]
+      resources :car, only: [:index, :create, :update, :destroy]
+      resources :rentals, only: [:index, :create, :update, :destroy]
     end
   end
 end

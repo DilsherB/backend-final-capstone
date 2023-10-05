@@ -3,23 +3,42 @@ class Api::V1::ModelController < ApplicationController
 
   def index
     @car_models = Model.all
-    render json: @car_model.to_json, status: :ok
+    render json: @car_models.to_json, status: :ok
   end
 
   def create
-    @car_model = Model.new(model_name: params[:model_name])
+    @car_model = Model.new(model_params)
 
-    render json: car_model.to_json, status: :created if @car_model.save
-    render json: car_model, status: :unprocessable_entity
+    if @car_model.save
+      render json: @car_model.to_json, status: :created
+    else
+      render json: @car_model.errors.to_json, status: :unprocessable_entity
+    end
   end
 
-  def destroy; end
+  def destroy
+    @car_model = Model.find(params['id'].to_i)
+    if @car_model.destroy
+      render json: @car_model.to_json, status: :ok
+    else
+      render json: @car_model.errors.to_json, status: :unprocessable_entity
+    end
+  end
 
-  def update; end
+  def update
+    @car_model = Model.find_by(id: params['id'].to_i)
+    if @car_model.nil?
+      render json: { name: 'unavailable model' }, status: :no_content
+    elsif @car_model.update(model_params)
+      render json: @car_model.to_json, status: :ok
+    else
+      render json: @car_model.errors.to_json, status: :unprocessable_entity
+    end
+  end
 
   private
 
   def model_params
-    params.require(:model).permit(:model_name, :year, :manufacturer)
+    params.permit(:name, :year, :manufacturer, :logo)
   end
 end
