@@ -6,7 +6,6 @@ class Car < ApplicationRecord
 
   validates :plate_number, presence: true, uniqueness: true
   validates :image, :price, :name, presence: true
-  validates :image, format: { with: /\.(png|jpg|jpeg)\Z/i, message: 'must be a URL for GIF, JPG or PNG image.' }
   validates_associated :model
 
   def available_cars
