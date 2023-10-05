@@ -57,4 +57,4 @@ end
 
 gem 'devise-api', '~> 0.1.3'
 
-gem "jsonapi-serializer", "~> 2.2"
+gem 'jsonapi-serializer', '~> 2.2'
