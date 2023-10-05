@@ -35,4 +35,4 @@ local:
 
 render:
   service: Disk
-  root: '/opt/activestorage-data'
+  root: <%= Rails.root.join("storage") %>
