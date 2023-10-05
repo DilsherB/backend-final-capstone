@@ -32,6 +32,8 @@ jobs:
           DB_PASSWORD: postgres
           DB_HOST: localhost
           DB_PORT: 5432
+          HOST: localhost
+          PORT: 3001
         run: |
           sudo apt-get -yqq install libpq-dev
           bundle install --jobs 4 --retry 3
