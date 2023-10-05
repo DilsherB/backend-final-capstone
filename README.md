@@ -138,6 +138,20 @@ Clone this repository to your desired folder:
 ```sh
   cd my-folder
   git clone https://github.com/DilsherB/backend-final-capstone
+  cd backend-final-capstone
+```
+
+Env Variables:
+
+```sh
+  Create .env file to the app root directory
+  Add the following env variables and save
+  export HOST=localhost
+  export PORT=3001
+  export DB_USERNAME=YOUR_DATABSE_USERNAME
+  export DB_PASSWORD=YOUR_DATABSE_PASSWORD
+  export DB_HOST=localhost
+  export DB_PORT=5432
 ```
 
 Install dependencies:
