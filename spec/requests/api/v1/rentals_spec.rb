@@ -1,31 +1,89 @@
-require 'rails_helper'
+require 'swagger_helper'
 
-RSpec.describe 'Api::V1::Rentals', type: :request do
-  describe 'GET /index' do
-    it 'returns http success' do
-      get '/api/v1/rentals/'
-      expect(response).to have_http_status(:unauthorized)
+RSpec.describe 'api/v1/rentals', type: :request do
+  let(:access_token) { FactoryBot.create(:api_key).access_token }
+
+  path '/api/v1/rentals' do
+    get('list rentals') do
+      tags 'Rentals'
+      consumes 'application/json'
+      security [bearerAuth: []]
+      parameter name: :token
+      let(:Authorization) { "Bearer #{token}" }
+      # let(:Authorization) { BearerToken.new(resource_owner: admin_user).token }
+      response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+
+    post('create rental') do
+      response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
   end
 
-  describe 'POST /create' do
-    it 'returns http success' do
-      post '/api/v1/rentals/'
-      expect(response).to have_http_status(:unauthorized)
-    end
-  end
+  path '/api/v1/rentals/{id}' do
+    # You'll want to customize the parameter types...
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
-  describe 'PATCH /update' do
-    it 'returns http success' do
-      patch '/api/v1/rentals/1'
-      expect(response).to have_http_status(:unauthorized)
-    end
-  end
+    patch('update rental') do
+      response(200, 'successful') do
+        let(:id) { '123' }
 
-  describe 'DELETE /destroy' do
-    it 'returns http success' do
-      delete '/api/v1/rentals/1'
-      expect(response).to have_http_status(:unauthorized)
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+
+    put('update rental') do
+      response(200, 'successful') do
+        let(:id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+
+    delete('delete rental') do
+      response(200, 'successful') do
+        let(:id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
   end
 end
