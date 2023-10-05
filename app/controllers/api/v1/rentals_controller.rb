@@ -16,6 +16,7 @@ class Api::V1::RentalsController < ApplicationController
     if @car.nil?
       render json: { message: 'Invalid Car' }, status: :no_content
     elsif @rental.save
+      update_car_status(params['car_id'].to_i)
       render json: @rental.to_json, status: :created
     else
       render json: @rental.errors.to_json, status: :unprocessable_entity
@@ -47,7 +48,11 @@ class Api::V1::RentalsController < ApplicationController
 
   private
 
-  def update_car_status(id); end
+  def update_car_status(id)
+    @car = Car.find(id.to_i)
+    @car.status = false
+    Car.find(id).update(status: false)
+  end
 
   def rental_params
     params.permit(:rental_date, :destination, :date_return)

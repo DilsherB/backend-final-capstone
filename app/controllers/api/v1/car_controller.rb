@@ -2,7 +2,7 @@ class Api::V1::CarController < ApplicationController
   before_action :authenticate_devise_api_token!, only: %i[create update destroy]
   def index
     @cars = Car.all
-    render json: @cars.to_json, status: :ok
+    render json: format(CarSerializer.new(@cars).serializable_hash[:data]), status: :ok
   end
 
   def create
@@ -14,7 +14,7 @@ class Api::V1::CarController < ApplicationController
     if @model.nil?
       render json: { message: 'Invalid model ID' }, status: :no_content
     elsif @car.save
-      render json: @car.to_json, status: :created
+      render json: CarSerializer.new(@car).serializable_hash[:data][:attributes], status: :created
     else
       render json: @car.errors.to_json, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class Api::V1::CarController < ApplicationController
   def destroy
     @car = Car.find(params['id'].to_i)
     if @car.destroy
-      render json: @car.to_json, status: :ok
+      render json: CarSerializer.new(@car).serializable_hash[:data][:attributes], status: :ok
     else
       render json: @car.errors.to_json, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class Api::V1::CarController < ApplicationController
     if @car.nil?
       render json: { name: 'unavailable car' }, status: :no_content
     elsif @car.update(car_params)
-      render json: @car.to_json, status: :ok
+      render json: CarSerializer.new(@car).serializable_hash[:data][:attributes], status: :ok
     else
       render json: @car.errors.to_json, status: :unprocessable_entity
     end
@@ -44,5 +44,13 @@ class Api::V1::CarController < ApplicationController
 
   def car_params
     params.permit(:name, :plate_number, :status, :image, :price, :city)
+  end
+
+  def format(hash)
+    output = []
+    hash.each do |element|
+      output << element[:attributes]
+    end
+    output
   end
 end
