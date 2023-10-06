@@ -4,7 +4,6 @@ RSpec.describe Api::V1::RentalsController, type: :controller do
   let(:user) { create(:user) }
   let(:car) { create(:car) }
 
-
   describe 'GET #index' do
     it 'returns a successful response' do
       get :index
