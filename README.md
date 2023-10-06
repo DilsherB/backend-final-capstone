@@ -184,7 +184,7 @@ The following command can be used to run the application.
 To run spec tests:
 
 ```sh
-  RUN rspecs
+  RUN rspec
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

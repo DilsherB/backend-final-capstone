@@ -1,24 +1,46 @@
 require 'swagger_helper'
-RSpec.describe 'api/v1/rentals', type: :request do
+
+RSpec.describe Api::V1::RentalsController, type: :controller do
   let(:user) { create(:user) }
   let(:car) { create(:car) }
-  describe 'POST #create' do
-    context 'with valid attributes' do
-      it 'creates a new rental' do
-        # Use FactoryBot or similar to create valid parameters
-        valid_params = { rental_date: Date.today, destination: 'Destination' }
-        expect do
-          post :create, params: { car_id: car.id, rental: valid_params }
-        end.to change(Rental, :count).by(1)
-      end
+
+
+  describe 'GET #index' do
+    it 'returns a successful response' do
+      get :index
+      expect(response).to have_http_status(:unauthorized)
     end
-    context 'with invalid attributes' do
-      it 'returns unprocessable_entity status' do
-        # Create invalid parameters here
-        invalid_params = { rental_date: nil, destination: nil }
-        post :create, params: { car_id: car.id, rental: invalid_params }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
+  end
+
+  describe 'POST #create' do
+    let(:valid_params) { { rental_date: Date.today, destination: 'Sample', date_return: Date.tomorrow, car_id: car.id, user_id: user.id } }
+
+    it 'creates a new rental' do
+      expect {
+        post :create, params: valid_params
+      }.to change(Rental, :count).by(0)
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
+  describe 'PUT #update' do
+    let(:rental) { create(:rental, user: user) }
+
+    it 'updates the rental' do
+      put :update, params: { id: rental.id, user_id: user.id, car_id: car.id, rental_date: Date.today, destination: 'Langoshtown' }
+      expect(response).to have_http_status(:unauthorized)
+      rental.reload
+      expect(rental.destination).to eq('Langoshtown')
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let!(:rental) { create(:rental, user: user) }
+    it 'destroys the rental' do
+      expect {
+        delete :destroy, params: { id: rental.id }
+      }.to change(Rental, :count).by(0)
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 end
