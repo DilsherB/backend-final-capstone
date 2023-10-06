@@ -136,9 +136,9 @@ use the following link to setup `PostgreSQL` if you dont have it already install
 Clone this repository to your desired folder:
 
 ```sh
-  cd my-folder
-  git clone https://github.com/DilsherB/backend-final-capstone
-  cd backend-final-capstone
+  RUN cd my-folder
+  RUN git clone https://github.com/DilsherB/backend-final-capstone
+  RUN cd backend-final-capstone
 ```
 
 Env Variables:
@@ -146,6 +146,7 @@ Env Variables:
 ```sh
   Create .env file to the app root directory
   Add the following env variables and save
+
   export HOST=localhost
   export PORT=3001
   export DB_USERNAME=YOUR_DATABSE_USERNAME
@@ -157,16 +158,17 @@ Env Variables:
 Install dependencies:
 
 ```sh
-  cd backend-final-capstone
-  bundle install
+  RUN cd backend-final-capstone
+  RUN bundle install
 ```
 
 ### Database
 Edit `config/database.yml` with your database connection info. Run the following command
 
 ```sh
-    rails db:create
-    rails db:schema:load
+    RUN rails db:create
+    RUN rails db:schema:load
+    RUN rails db:migrate
 ```
 
 ### Usage
@@ -174,7 +176,15 @@ Edit `config/database.yml` with your database connection info. Run the following
 The following command can be used to run the application.
 
 ```sh
-  rails s
+  RUN rails s
+```
+
+### Test
+
+To run spec tests:
+
+```sh
+  RUN rspec
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
