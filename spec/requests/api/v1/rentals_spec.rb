@@ -11,7 +11,6 @@ RSpec.describe Api::V1::RentalsController, type: :controller do
       expect(response).to have_http_status(:unauthorized)
     end
   end
-
   describe 'POST #create' do
     let(:valid_params) do
       { rental_date: Date.today, destination: 'Sample', date_return: Date.tomorrow, car_id: car.id, user_id: user.id }
