@@ -49,9 +49,8 @@ class Api::V1::RentalsController < ApplicationController
   private
 
   def update_car_status(id)
-    @car = Car.find(id.to_i)
-    @car.status = false
-    Car.find(id).update(status: false)
+    car = Car.find(id.to_i)
+    car.update(status: false)
   end
 
   def rental_params
