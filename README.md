@@ -24,6 +24,7 @@
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
+  -[test](#run-tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -178,6 +179,18 @@ The following command can be used to run the application.
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Run tests
+
+To run tests, run the following commands:
+
+```sh
+  rspec
+  rubocop
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- AUTHORS -->
 
